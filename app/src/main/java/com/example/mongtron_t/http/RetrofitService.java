@@ -26,9 +26,9 @@ public interface RetrofitService {
     Call<Void> doPostRegister(@Field("email") String email, @Field("password") String password,
                                           @Field("nickname") String nickname, @Field("age") int age , @Field("sex") char sex, @Field("nationality") String nationality);       //@Body 는 클라이언트가 서버로 보내는 data 형식
     @FormUrlEncoded
-    @POST("login")
+    @POST("users/login")
     Call<LoginResponse> doPostLogin(@Field("email") String email, @Field("password") String password);
-    @GET("emailCheck/{email}")
+    @GET("users/email/{email}")
     Call<Void> doGetEmailCheck(@Path("email") String email);
     @GET("nicknameCheck/{nickname}")
     Call<Void> doGetNicknameCheck(@Path("nickname") String nickname);
