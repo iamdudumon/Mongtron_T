@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F2F8"
+    android:orientation="vertical"
+    android:weightSum="776">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="64"
+        android:orientation="horizontal"
+        android:weightSum="360">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20" />
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="16"
+            android:background="@drawable/back_button_img"
+            android:contentDescription="@string/todo" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="36" />
+
+        <TextView
+            android:id="@+id/headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="top"
+            android:lineSpacingExtra="2sp"
+            android:text="@string/sign_up"
+            android:textAppearance="@style/headline"
+            android:translationY="-1.11sp" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="96" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="56"
+        android:background="@drawable/sign_up_complete_img"
+        android:layout_gravity="center"
+        android:contentDescription="@string/todo" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="35" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/congratulate"
+        android:textAppearance="@style/congratulate"
+        android:lineSpacingExtra="-2sp"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/sign_up_complete_context"
+        android:textAppearance="@style/sign_up_complete_context"
+        android:lineSpacingExtra="2sp"
+        android:translationY="-0.97sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"/>
+
+    <android.widget.Button
+        android:id="@+id/moveLoginButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="56"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rounding_button_main_color"
+        android:text="@string/Login"
+        android:textColor="@color/white"
+        android:textAppearance="@style/continue_button"
+        android:contentDescription="@string/todo" />
+
+
+</LinearLayout>

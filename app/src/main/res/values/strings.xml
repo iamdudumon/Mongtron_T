@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Mongtron_T</string>
+    <string name="push_long_button">길게 누르세요</string>
+    <string name="headline">Setting</string>
+    <string name="edit">Edit</string>
+    <string name="nickname">Nickname</string>
+    <string name="name_name_n">Name</string>
+    <string name="Login">Login</string>
+    <string name="some_id">안녕하세요,\n로그인이나 회원가입해주세요.</string>
+    <string name="email_label">e-mail</string>
+    <string name="password_label">password</string>
+    <string name="emailHint">your@email.com</string>
+    <string name="continue_button">Continue</string>
+    <string name="todo">TODO</string>
+    <string name="password_hint">8+ Characters</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="sign_up">Sign up</string>
+    <string name="temp_email">xxxx1234@naver.com</string>
+    <string name="you_can_use">You can use this email to create a new account.\nDo you want to continue?</string>
+    <string name="cancel_button">CANCEL</string>
+    <string name="create_account_button">CREATE ACCOUNT</string>
+    <string name="sign_up_password_context">Please enter a password.</string>
+    <string name="supporting_">8+ characters</string>
+    <string name="confirm_password_label">confirm password</string>
+    <string name="next">NEXT</string>
+    <string name="sign_up_nickname_context">Enter a nickname.</string>
+    <string name="max_11_char">Max 11 characters including letters, numbers, and symbols. You can change it in your account settings.</string>
+    <string name="nickname_label">Nickname</string>
+    <string name="supporting_nickname">Max 11 characters</string>
+    <string name="sign_up_add_context">추가 정보를 입력해주세요.</string>
+    <string name="sex_label">Sex</string>
+    <string name="country_label">Country</string>
+    <string name="age_label">Age</string>
+    <string name="congratulate">Congratulation!</string>
+    <string name="sign_up_complete_context">You have completed your subscription.\nYou can start using the app.</string>
+    <string name="logout">logout</string>
+    <string name="e_mail_setting">E-mail</string>
+    <string name="gps_setting">GPS</string>
+    <string name="male">Male</string>
+    <string name="nationality_label">Nationality</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="only_number">Only Number.</string>
+    <string name="female">Female</string>
+    <string name="tap_to_choose">Tap to choose.</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="map">Map</string>
+    <string name="setting">Setting</string>
+    <string name="setting_the_distance_radius">Setting the Distance Radius</string>
+    <string name="menu">Menu</string>
+    <string name="frineds">Friends</string>
+    <string name="normal_map">Normal\nMap</string>
+    <string name="satellite_map">Satellite\nMap</string>
+    <string name="text_translate">Text\nTranslate</string>
+    <string name="setting_distance_radius">Setting\nDistance Radius</string>
+    <string name="friends">Friends</string>
+    <string name="km">km</string>
+    <string name="message">Message</string>
+    <string name="chat_log">Chat log</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="warning">Warning</string>
+
+
+</resources>

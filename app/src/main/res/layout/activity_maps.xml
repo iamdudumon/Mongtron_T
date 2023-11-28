@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--    android:orientation="horizontal">-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:weightSum="800"-->
+    <!--        android:orientation="vertical"-->
+    <!--        android:gravity="center">-->
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.MapsActivity" />
+
+
+    <LinearLayout
+        android:id="@+id/funcBarBox"
+        android:layout_width="240dp"
+        android:layout_height="56dp"
+        android:background="@drawable/rounding_box"
+        android:layout_gravity="bottom|center"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <android.widget.Button
+            android:id="@+id/menuMoveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="-5dp"
+            android:paddingTop="5dp"
+            android:text="@string/menu"
+            android:textAppearance="@style/caption"
+            android:drawableTop="@drawable/menu_button_img"
+            android:background="@null"/>
+
+
+        <android.widget.Button
+            android:id="@+id/friendListMoveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="-5dp"
+            android:paddingTop="5dp"
+            android:text="@string/frineds"
+            android:textAppearance="@style/caption"
+            android:drawableTop="@drawable/friend_list_button_img"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/funcBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:focusable="true"
+        tools:context=".fragment.FuncBarFragment" />
+
+    <!--    </LinearLayout>-->
+
+
+
+
+</FrameLayout>
+

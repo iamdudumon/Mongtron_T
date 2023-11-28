@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F2F8"
+    android:orientation="vertical"
+    android:weightSum="776">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="64"
+        android:orientation="horizontal"
+        android:weightSum="360">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20" />
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="16"
+            android:layout_gravity="center"
+            android:background="@drawable/back_button_img"
+            android:contentDescription="@string/todo" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="36" />
+
+        <TextView
+            android:id="@+id/headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/sign_up"
+            android:textAppearance="@style/headline"
+            android:lineSpacingExtra="2sp"
+            android:translationY="-1.11sp"
+            android:gravity="top"
+            />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="32" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:text="@string/sign_up_add_context"
+        android:textAppearance="@style/temp_email"
+        android:lineSpacingExtra="8sp"
+        android:translationY="-4.11sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="62" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/sex_label"
+        android:textAppearance="@style/label"
+        android:lineSpacingExtra="4sp"
+        android:translationY="-1.97sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <android.widget.Button
+        android:id="@+id/sexFragmentButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@null"
+        android:drawableEnd="@drawable/spinner_icon_img"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical|start"
+        android:text="@string/tap_to_choose"
+        android:textAppearance="@style/input_text"
+        android:textAllCaps="false"
+        android:textAlignment="textStart"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="#B7BCC8"/>
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="22" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/country_label"
+        android:textAppearance="@style/label"
+        android:lineSpacingExtra="4sp"
+        android:translationY="-1.97sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <LinearLayout
+        android:id="@+id/nationalityFragmentButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/nationalityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_to_choose"
+            android:textAppearance="@style/input_text"/>
+
+        <ImageView
+            android:id="@+id/nationalityImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/todo" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/spinner_icon_img"
+            android:contentDescription="@string/todo" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="#B7BCC8"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="22" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/age_label"
+        android:textAppearance="@style/label"
+        android:lineSpacingExtra="4sp"
+        android:translationY="-1.97sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <android.widget.Button
+        android:id="@+id/ageFragmentButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@null"
+        android:drawableEnd="@drawable/spinner_icon_img"
+        android:text="@string/tap_to_choose"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/input_text"
+        android:textAllCaps="false"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="#B7BCC8"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="70" />
+
+    <android.widget.Button
+        android:id="@+id/signupAddNextButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="56"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rounding_button_main_color"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        android:textAppearance="@style/continue_button"
+        android:contentDescription="@string/todo" />
+
+
+</LinearLayout>

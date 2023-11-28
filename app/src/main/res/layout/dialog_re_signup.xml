@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/setting"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/rounding_box_dialog"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_gravity="center"
+            android:text="@string/warning"
+            android:textAppearance="@style/dialog_sex"
+            android:textColor="#ff0000"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#B7BCC8" />
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="80dp">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="24dp"
+           android:layout_gravity="center"
+           android:text="Would you like to sign up\nagain from the beginning?"
+           android:textAppearance="@style/dialog_sex" />
+
+
+   </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <android.widget.Button
+            android:id="@+id/reDialogNoButton"
+            android:layout_width="79dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/rounding_box_unchecked"
+            android:text="No"
+            android:textAppearance="@style/sign_up_sex_cancel" />
+
+        <android.widget.Button
+            android:id="@+id/reDialogYesButton"
+            android:layout_width="79dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/rounding_button_main_color"
+            android:text="Yes"
+            android:textAppearance="@style/sign_up_sex_save" />
+
+    </LinearLayout>
+
+</LinearLayout>

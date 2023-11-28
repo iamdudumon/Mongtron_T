@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/setting"
+    android:layout_width="300dp"
+    android:layout_height="270dp"
+    android:layout_gravity="center"
+    android:background="@drawable/rounding_box_dialog"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp">
+
+        <Space
+            android:layout_width="24dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/age_label"
+            android:textAppearance="@style/dialog_sex" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#B7BCC8" />
+
+    <LinearLayout
+        android:id="@+id/gender_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/signupAgeEditText"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:autofillHints="null"
+            android:backgroundTint="@color/edit_line_color"
+            android:textColor="@color/edit_text_color"
+            android:textColorHint="@color/edit_text_color"
+            android:hint="@string/only_number"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <android.widget.Button
+            android:id="@+id/ageDialogCancelButton"
+            android:layout_width="79dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/rounding_box_unchecked"
+            android:text="@string/cancel"
+            android:textAppearance="@style/sign_up_sex_cancel" />
+
+        <android.widget.Button
+            android:id="@+id/ageDialogSaveButton"
+            android:layout_width="79dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/rounding_button_main_color"
+            android:text="@string/save"
+            android:textAppearance="@style/sign_up_sex_save" />
+
+    </LinearLayout>
+
+</LinearLayout>

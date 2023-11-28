@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F2F8"
+    android:orientation="vertical"
+    android:weightSum="776">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="64"
+        android:orientation="horizontal"
+        android:weightSum="360">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20" />
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="16"
+            android:background="@drawable/back_button_img"
+            android:contentDescription="@string/todo" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="36" />
+
+        <TextView
+            android:id="@+id/headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="top"
+            android:lineSpacingExtra="2sp"
+            android:text="@string/sign_up"
+            android:textAppearance="@style/headline"
+            android:translationY="-1.11sp" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="32" />
+
+    <TextView
+        android:id="@+id/tempEmailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/temp_email"
+        android:textAppearance="@style/temp_email"
+        android:translationY="-4.11sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20" />
+
+    <TextView
+        android:id="@+id/you_can_use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:lineSpacingExtra="3sp"
+        android:text="@string/you_can_use"
+        android:textAppearance="@style/you_can_use"
+        android:translationY="-1.45sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="177" />
+
+    <android.widget.Button
+        android:id="@+id/createAccountButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="56"
+        android:background="@drawable/rounding_button_main_color"
+        android:contentDescription="@string/todo"
+        android:text="@string/create_account_button"
+        android:textAppearance="@style/continue_button"
+        android:textColor="@color/white" />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10" />
+
+    <android.widget.Button
+        android:id="@+id/cancelButton"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="56"
+        android:background="@drawable/rounding_button"
+        android:contentDescription="@string/todo"
+        android:text="@string/cancel_button"
+        android:textAppearance="@style/continue_button" />
+
+</LinearLayout>

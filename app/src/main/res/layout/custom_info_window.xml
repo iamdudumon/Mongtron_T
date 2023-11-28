@@ -1,0 +1,118 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounding_info_window_box"
+        android:elevation="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/infoWindowNicknameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nickname"
+                android:textAppearance="@style/info_window_nickname" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/infoWindowSexTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6.5dp"
+                android:text="@string/sex_label"
+                android:textAppearance="@style/info_window" />
+
+            <ImageView
+                android:id="@+id/infoWindowImgView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16.5dp"
+                android:background="@drawable/profile_null_img"
+                android:contentDescription="@string/todo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="9dp"
+                android:text="@string/age_label"
+                android:textAppearance="@style/info_window" />
+
+            <TextView
+                android:id="@+id/infoWindowAgeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textAppearance="@style/info_window_age" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#B7BCC8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65.17dp"
+            android:gravity="center">
+
+            <android.widget.Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableTop="@drawable/mail_button_img"
+                android:paddingTop="5dp"
+                android:text="@string/message"
+                android:textAppearance="@style/info_window_button" />
+
+            <android.widget.Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableTop="@drawable/chat_log_button_img"
+                android:paddingTop="5dp"
+                android:text="@string/chat_log"
+                android:textAppearance="@style/info_window_button" />
+
+            <android.widget.Button
+                android:id="@+id/infoWindowAddFriendButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableTop="@drawable/person_add_button_img"
+                android:paddingTop="5dp"
+                android:text="@string/add_friend"
+                android:textAppearance="@style/info_window_button" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/down_arrow"
+        android:elevation="30dp"
+        android:contentDescription="@string/todo" />
+
+
+</LinearLayout>

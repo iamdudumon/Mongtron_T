@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="800">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="230" />
+
+
+    <ImageButton
+        android:id="@+id/sosCallButton"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="220"
+        android:background="@null"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/main_sos_button" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10" />
+
+    <TextView
+        android:id="@+id/pushLongTextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="23"
+        android:gravity="center_horizontal|top"
+        android:text="@string/push_long_button"
+        android:textAppearance="@style/push_long_button" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="161" />
+
+    <LinearLayout
+        android:id="@+id/mainButtonBox"
+        android:layout_width="240dp"
+        android:layout_height="0dp"
+        android:layout_weight="56"
+        android:background="@drawable/rounding_box"
+        android:elevation="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <android.widget.Button
+            android:id="@+id/mapMoveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableTop="@drawable/map_button_img"
+            android:drawablePadding="-5dp"
+            android:paddingTop="5dp"
+            android:text="@string/map"
+            android:textAppearance="@style/caption" />
+
+        <android.widget.Button
+            android:id="@+id/settingMoveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="-5dp"
+            android:paddingTop="5dp"
+            android:text="@string/setting"
+            android:textAppearance="@style/caption"
+            android:drawableTop="@drawable/setting_button_img"
+            android:background="@null"/>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"/>
+
+
+    <!--        <android.widget.Button-->
+    <!--            android:id="@+id/temp"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="0dp"-->
+    <!--            android:layout_weight="60"-->
+    <!--            android:layout_marginStart="80dp"-->
+    <!--            android:layout_marginEnd="80dp"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:background="@drawable/button_frame_button_img"/>-->
+
+
+</LinearLayout>
