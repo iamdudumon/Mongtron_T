@@ -13,6 +13,8 @@ import com.example.mongtron_t.model.UserPositionVO;
 import com.example.mongtron_t.response.LoginResponse;
 import com.example.mongtron_t.response.OthersResponse;
 
+import java.util.Objects;
+
 public class UserInfoDAO {                                  //사용자 정보를 내부 파일 SharedPreferences Class 에 load/store 하는 Class
     private final Context context;
     SharedPreferences autologin;
@@ -109,7 +111,7 @@ public class UserInfoDAO {                                  //사용자 정보�
             if (loginResponse.getId() != -1) {                                    //회원 가입의 결과에 따라 변수 값 할당
                 toastMsg = "Successfully logged in as a " + loginResponse.getNickName();
                 UserInfoVO.getInstance().setUser(loginResponse.getEmail(), UserInfoVO.getInstance().getPassword(), //서버로 받아온 유저 정보를 userVO 객체에 할당
-                        loginResponse.getNickName(), loginResponse.getAge(), loginResponse.getSex(), loginResponse.getNationality(), loginResponse.getEmbassyNum());
+                        loginResponse.getNickName(), loginResponse.getAge(), Objects.equals(loginResponse.getSex(), "male") ? '1' : '2', loginResponse.getNationality(), loginResponse.getEmbassyNum());
                 UserInfoVO.getInstance().setId(loginResponse.getId());
                 result = true;
 

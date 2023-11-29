@@ -5,11 +5,11 @@ public class LoginResponse {
     private final String email;
     private final String nickname;
     private final int age;
-    private final char sex;
+    private final String sex;
     private final String nationality;
     private final String embassyNum;
 
-    public LoginResponse(int id, String email, String nickname, int age, char sex, String nationality, String embassyNum) {
+    public LoginResponse(int id, String email, String nickname, int age, String sex, String nationality, String embassyNum) {
         this.id = id;
         this.email = email;
         this.nickname = nickname;
@@ -35,7 +35,7 @@ public class LoginResponse {
         return age;
     }
 
-    public char getSex() {
+    public String getSex() {
         return sex;
     }
 
