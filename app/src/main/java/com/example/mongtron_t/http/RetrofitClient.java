@@ -140,29 +140,43 @@ public class RetrofitClient {
             Log.e("TAG", "Server Intentional Error");
             e.printStackTrace();
             return true;
-        }catch (IOException e){
+        }catch (IOException e) {
             Log.e("TAG", "Disconnected With Server");
             e.printStackTrace();
             return true;
         }
-
     }
 
+    static public void coordinateUpdatePatch(){
+        Call<Void> call = retrofitService.doPatchCoordinateUpdate(UserInfoVO.getInstance().getId(),
+                UserPositionVO.getInstance().getLatitude(), UserPositionVO.getInstance().getLongitude(), UserPositionVO.getInstance().getRadiusInfo());
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
     static public void stateUpdatePatch() {
         Call<Integer> call = retrofitService.doPatchStateUpdate(UserInfoVO.getInstance().getId(), UserPositionVO.getInstance().isGpsState());
 
         call.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(@NonNull Call<Integer> call, @NonNull Response<Integer> response) {
-                if (!response.isSuccessful() || response.body() == 400) {
+                if (!response.isSuccessful() || response.code() == 400) {
                     Log.e("TAG", "런타임 오류 GPS State Update 실패: " + response.code());
                     stateUpdatePatch(); //다시 서버와 통신
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<Integer> call, Throwable t) {
-                Log.e("TAG", "Server 와 DisConnected!");
+            public void onFailure(@NonNull Call<Integer> call, @NonNull Throwable t) {
+                Log.e("TAG", "Server 와 DisConnected!" + "\n" + t.getMessage());
             }
         });
     }
@@ -173,7 +187,7 @@ public class RetrofitClient {
         call.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(@NonNull Call<Integer> call, @NonNull Response<Integer> response) {
-                if (!response.isSuccessful() || response.body() == 400) {
+                if (!response.isSuccessful() || response.code() == 400) {
                     Log.e("TAG", "런타임 오류 친구 등록 실패: " + response.code());
                     friendAddPatch(friendId);
                 }

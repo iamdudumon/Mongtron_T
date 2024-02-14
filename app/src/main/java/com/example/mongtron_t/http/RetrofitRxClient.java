@@ -30,8 +30,8 @@ public class RetrofitRxClient {
         return retrofitService.doGetFriendList(UserInfoVO.getInstance().getId());
     }
 
-    static public Single<OthersResponse> positionUpdatePost(){
-        return retrofitService.doPostPositionUpdate(UserInfoVO.getInstance().getId(), UserInfoVO.getInstance().getNickname(),
+    static public Single<OthersResponse> nearbyOthersGet(){
+        return retrofitService.doGetNearbyOthers(UserInfoVO.getInstance().getId(),
                 UserPositionVO.getInstance().getLatitude(), UserPositionVO.getInstance().getLongitude(), UserPositionVO.getInstance().getRadiusInfo());
     }
 }

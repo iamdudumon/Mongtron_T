@@ -254,7 +254,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
                 markerFunc.markMeLocation(markerSnippet, currentPosition);
 
                 if (UserInfoVO.getInstance().getId() > 0 && UserPositionVO.getInstance().isGpsState()) {           //로그인 상태 + gps 표시여부가 on 이어야
-                    userPositionDAO.storeCurrentLocation(currentPosition, markerFunc);
+                    userPositionDAO.storeCurrentLocation(currentPosition);
+                    userPositionDAO.getNearbyOthersLocation(currentPosition, markerFunc);
                 }
             }
         }

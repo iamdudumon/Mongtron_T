@@ -55,11 +55,10 @@ public class UserPositionDAO {
         autoLoginEditor.commit();
     }
 
-    public void storeCurrentLocation(LatLng currentPosition, MarkerFunc markerFunc) { //gps 공유나, 채팅을 사용하면 retrofitClient 객체를 굳이 삭제하고 다시 생성하고를 반복해야 할까?
+    public void getNearbyOthersLocation(LatLng currentPosition, MarkerFunc markerFunc){
         UserPositionVO.getInstance().setGpsPosition((float) currentPosition.latitude, (float) currentPosition.longitude);
-        //RetrofitClient.positionUpdatePost();
 
-        RetrofitRxClient.disposable.add(RetrofitRxClient.positionUpdatePost()
+        RetrofitRxClient.disposable.add(RetrofitRxClient.nearbyOthersGet()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<OthersResponse>() {
@@ -86,9 +85,13 @@ public class UserPositionDAO {
                     }
                 })
         );
-
+        //gps 공유나, 채팅을 사용하면 retrofitClient 객체를 굳이 삭제하고 다시 생성하고를 반복해야 할까?
         //Solution1. call을 애초에 execute(비동기)로 실행하고 thread 처리를 한다.
         //Solution2. observer pattern 사용?
+    }
 
+    public void storeCurrentLocation(LatLng currentPosition) {
+        UserPositionVO.getInstance().setGpsPosition((float) currentPosition.latitude, (float) currentPosition.longitude);
+        RetrofitClient.coordinateUpdatePatch();
     }
 }
