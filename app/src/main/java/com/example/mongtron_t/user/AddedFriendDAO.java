@@ -57,7 +57,7 @@ public class AddedFriendDAO extends SQLiteOpenHelper {
     public void deleteAddedFriend(int friendId){
         //서버측 db 에서 친구 목록 삭제
         RetrofitClient retrofitClient = new RetrofitClient();
-        retrofitClient.friendDeletePatch(friendId);
+        retrofitClient.friendRemoveDelete(friendId);
 
         SQLiteDatabase db = this.getWritableDatabase();
         String sql = "delete from " + TABLE_NAME + " where friendId = " + String.valueOf(friendId);

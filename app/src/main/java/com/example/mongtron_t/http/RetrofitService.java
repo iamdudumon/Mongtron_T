@@ -7,6 +7,7 @@ import com.example.mongtron_t.response.OthersResponse;
 
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -47,8 +48,8 @@ public interface RetrofitService {
     @FormUrlEncoded
     @POST("friend/")
     Call<Void> doPostFriendAdd(@Field("my_id") int myId, @Field("friend_id") int friendId);
-    @PATCH("friend/delete/{my_id}/{friend_id}")
-    Call<Integer> doPatchFriendDelete(@Path("my_id") int myId, @Path("friend_id") int friendId);
+    @DELETE("friend/")
+    Call<Void> doDeleteFriendRemove(@Query("my_id") int myId, @Query("friend_id") int friendId);
     @GET("friend/select/{id}")
     Single<AddedFriendResponse> doGetFriendList(@Path("id") int id);
 

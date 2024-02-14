@@ -200,12 +200,12 @@ public class RetrofitClient {
         });
     }
 
-    public void friendDeletePatch(int friendId) {
-        Call<Integer> call = retrofitService.doPatchFriendDelete(UserInfoVO.getInstance().getId(), friendId);
+    public void friendRemoveDelete(int friendId) {
+        Call<Void> call = retrofitService.doDeleteFriendRemove(UserInfoVO.getInstance().getId(), friendId);
 
-        call.enqueue(new Callback<Integer>() {
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(@NonNull Call<Integer> call, @NonNull Response<Integer> response) {
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (!response.isSuccessful() || response.code() == 400) {
                     Log.e("TAG", "런타임 오류 친구 삭제 실패: " + response.code());
 //                    friendDeletePatch(friendId);
@@ -213,7 +213,7 @@ public class RetrofitClient {
             }
 
             @Override
-            public void onFailure(@NonNull Call<Integer> call, Throwable t) {
+            public void onFailure(@NonNull Call<Void> call, Throwable t) {
                 Log.e("TAG", "Server 와 DisConnected!");
             }
         });
