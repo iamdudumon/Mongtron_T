@@ -27,7 +27,7 @@ public class RetrofitRxClient {
     }
 
     public Single<AddedFriendResponse> friendListGet(){
-        return retrofitService.doGetFriendList(UserInfoVO.getInstance().getId());
+        return retrofitService.doGetFriendList(UserInfoVO.getInstance().getId(), UserPositionVO.getInstance().getLatitude(), UserPositionVO.getInstance().getLongitude());
     }
 
     static public Single<OthersResponse> nearbyOthersGet(){

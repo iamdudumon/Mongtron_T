@@ -50,8 +50,8 @@ public interface RetrofitService {
     Call<Void> doPostFriendAdd(@Field("my_id") int myId, @Field("friend_id") int friendId);
     @DELETE("friend/")
     Call<Void> doDeleteFriendRemove(@Query("my_id") int myId, @Query("friend_id") int friendId);
-    @GET("friend/select/{id}")
-    Single<AddedFriendResponse> doGetFriendList(@Path("id") int id);
+    @GET("friend/list")
+    Single<AddedFriendResponse> doGetFriendList(@Query("id") int id, @Query("latitude") double latitude, @Query("longitude") double longitude);
 
     //보안 관련
 //    @FormUrlEncoded
