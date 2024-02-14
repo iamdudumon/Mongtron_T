@@ -44,8 +44,9 @@ public interface RetrofitService {
     Call<Integer> doPatchStateUpdate(@Path("id") int id, @Field("gpsState") boolean gpsState);
 
     //친구 목록과 관련
-    @PATCH("friend/add/{my_id}/{friend_id}")
-    Call<Integer> doPatchFriendAdd(@Path("my_id") int myId, @Path("friend_id") int friendId);
+    @FormUrlEncoded
+    @POST("friend/")
+    Call<Void> doPostFriendAdd(@Field("my_id") int myId, @Field("friend_id") int friendId);
     @PATCH("friend/delete/{my_id}/{friend_id}")
     Call<Integer> doPatchFriendDelete(@Path("my_id") int myId, @Path("friend_id") int friendId);
     @GET("friend/select/{id}")

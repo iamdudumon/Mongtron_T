@@ -68,7 +68,7 @@ public class AddedFriendDAO extends SQLiteOpenHelper {
     public void insertAddedFriend(AddedFriendVO friendVO){
         //서버측으로 친구를 추가했다고 알려줌
         RetrofitClient retrofitClient = new RetrofitClient();
-        retrofitClient.friendAddPatch(friendVO.getFriendId());
+        retrofitClient.friendAddPost(friendVO.getFriendId());
         //내부 db에 친구 추가
         SQLiteDatabase db = this.getWritableDatabase();
         String sql = "insert into " + TABLE_NAME + " values(?, ?, ?, ?, ?)";

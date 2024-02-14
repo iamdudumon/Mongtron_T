@@ -181,21 +181,21 @@ public class RetrofitClient {
         });
     }
 
-    public void friendAddPatch(int friendId) {
-        Call<Integer> call = retrofitService.doPatchFriendAdd(UserInfoVO.getInstance().getId(), friendId);
+    public void friendAddPost(int friendId) {
+        Call<Void> call = retrofitService.doPostFriendAdd(UserInfoVO.getInstance().getId(), friendId);
 
-        call.enqueue(new Callback<Integer>() {
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(@NonNull Call<Integer> call, @NonNull Response<Integer> response) {
+            public void onResponse(@NonNull Call<Void> call, @NonNull Response<Void> response) {
                 if (!response.isSuccessful() || response.code() == 400) {
                     Log.e("TAG", "런타임 오류 친구 등록 실패: " + response.code());
-                    friendAddPatch(friendId);
+//                    friendAddPatch(friendId);
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<Integer> call, Throwable t) {
-                Log.e("TAG", "Server 와 DisConnected!");
+            public void onFailure(@NonNull Call<Void> call, Throwable t) {
+                Log.e("TAG", "Server 와 DisConnected!" + "\n" + t.getMessage());
             }
         });
     }
@@ -206,9 +206,9 @@ public class RetrofitClient {
         call.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(@NonNull Call<Integer> call, @NonNull Response<Integer> response) {
-                if (!response.isSuccessful() || response.body() == 400) {
+                if (!response.isSuccessful() || response.code() == 400) {
                     Log.e("TAG", "런타임 오류 친구 삭제 실패: " + response.code());
-                    friendDeletePatch(friendId);
+//                    friendDeletePatch(friendId);
                 }
             }
 
