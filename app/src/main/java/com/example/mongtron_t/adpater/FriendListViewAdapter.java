@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mongtron_t.R;
-import com.example.mongtron_t.user.AddedFriendDAO;
+import com.example.mongtron_t.service.AddedFriendService;
 import com.example.mongtron_t.model.AddedFriendVO;
 
 import java.util.List;
@@ -41,7 +41,7 @@ public class FriendListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Context context = parent.getContext();
         AddedFriendVO addedFriendVO = (AddedFriendVO) this.getItem(position);
-        AddedFriendDAO addedFriendDAO = new AddedFriendDAO(context);
+        AddedFriendService addedFriendService = new AddedFriendService(context);
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -75,7 +75,7 @@ public class FriendListViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 int friendId = addedFriendVO.getFriendId();
-                addedFriendDAO.deleteAddedFriend(friendId);              //db 에서 삭제
+                addedFriendService.deleteAddedFriend(friendId);              //db 에서 삭제
                 AddedFriendVO.friendsList.remove(position);              //메모리 상에 삭제
                 FriendListViewAdapter.this.notifyDataSetChanged();
             }

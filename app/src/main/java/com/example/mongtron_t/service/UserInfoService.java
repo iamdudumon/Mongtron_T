@@ -1,4 +1,4 @@
-package com.example.mongtron_t.user;
+package com.example.mongtron_t.service;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,12 +15,12 @@ import com.example.mongtron_t.response.OthersResponse;
 
 import java.util.Objects;
 
-public class UserInfoDAO {                                  //사용자 정보를 내부 파일 SharedPreferences Class 에 load/store 하는 Class
+public class UserInfoService {                                  //사용자 정보를 내부 파일 SharedPreferences Class 에 load/store 하는 Class
     private final Context context;
     SharedPreferences autologin;
     SharedPreferences.Editor autoLoginEditor;
 
-    public UserInfoDAO(Context context) {
+    public UserInfoService(Context context) {
         this.context = context;
         autologin = this.context.getSharedPreferences("autoLogin", Activity.MODE_PRIVATE);
         autoLoginEditor = autologin.edit();

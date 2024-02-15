@@ -9,17 +9,17 @@ import android.widget.ListView;
 
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.adpater.FriendListViewAdapter;
-import com.example.mongtron_t.user.AddedFriendDAO;
+import com.example.mongtron_t.service.AddedFriendService;
 
 public class FriendListActivity extends AppCompatActivity {
-    AddedFriendDAO addedFriendDAO;
+    AddedFriendService addedFriendService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
 
-        addedFriendDAO = new AddedFriendDAO(this);
+        addedFriendService = new AddedFriendService(this);
 
         ListView addedFriendListView = findViewById(R.id.addedFriendListView);
         FriendListViewAdapter addedFriendVOArrayAdapter = new FriendListViewAdapter();
@@ -41,8 +41,8 @@ public class FriendListActivity extends AppCompatActivity {
         friendUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddedFriendDAO addedFriendDAO = new AddedFriendDAO(getApplicationContext());
-                addedFriendDAO.getServerFriendList();
+                AddedFriendService addedFriendService = new AddedFriendService(getApplicationContext());
+                addedFriendService.getServerFriendList();
             }
         });
     }

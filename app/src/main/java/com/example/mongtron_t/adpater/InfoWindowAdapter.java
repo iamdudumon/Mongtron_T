@@ -50,7 +50,7 @@ public class InfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 //        android.widget.Button infoWindowAddFriendButton = mWindow.findViewById(R.id.infoWindowAddFriendButton);
 //        infoWindowAddFriendButton.setOnClickListener(v -> {
 //            Log.e("TAG", "친구등롞!!");
-//            AddedFriendDAO addedFriendDAO = new AddedFriendDAO(context);
+//            AddedFriendService addedFriendDAO = new AddedFriendService(context);
 //            OthersVO user = MarkerFunc.currentMarkerMap.get(marker);
 //            if (user == null) return;                                     //자신의 mark 클릭 시 이벤트 무시
 //

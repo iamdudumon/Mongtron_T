@@ -17,13 +17,13 @@ import android.widget.Toast;
 
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.dialog.CustomProgressDialog;
-import com.example.mongtron_t.user.AddedFriendDAO;
-import com.example.mongtron_t.user.UserInfoDAO;
+import com.example.mongtron_t.service.AddedFriendService;
+import com.example.mongtron_t.service.UserInfoService;
 import com.example.mongtron_t.model.UserInfoVO;
 
 
 public class LoginActivity extends AppCompatActivity {
-    UserInfoDAO userInfoDAO;
+    UserInfoService userInfoService;
 
     Button loginContinueButton;
     CustomProgressDialog dialog;
@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        userInfoDAO = new UserInfoDAO(getApplicationContext());
+        userInfoService = new UserInfoService(getApplicationContext());
         loginContinueButton = findViewById(R.id.loginContinueButton);
         dialog = new CustomProgressDialog(LoginActivity.this);
 
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             new Thread(() -> {
                 try {
                     //이메일 체크
-                    boolean emailCheekResult = userInfoDAO.emailCheck(email);
+                    boolean emailCheekResult = userInfoService.emailCheck(email);
                     dialog.cancelProgressDialog();
                     if (emailCheekResult) {                          //이메일이 존재, 바로 비밀번호로 로그인 가능
                         Log.e("TAG", "해당 이메일 존재");
@@ -106,17 +106,17 @@ public class LoginActivity extends AppCompatActivity {
             String[] emailPassword = readEmailPassword();
             UserInfoVO.getInstance().setEmail(emailPassword[0]);
             UserInfoVO.getInstance().setPassword(emailPassword[1]);
-            userInfoDAO = new UserInfoDAO(getApplicationContext());
+            userInfoService = new UserInfoService(getApplicationContext());
 
             new Thread(() -> {          //네트워크 작업은 무조건 메인 thread 와 다른 thread 로 구동해야함
                 try {
                     boolean loginResult;
-                    loginResult = userInfoDAO.login();
+                    loginResult = userInfoService.login();
                     dialog.cancelProgressDialog();
 
                     if (loginResult) {                          //로그인 성공
-                        AddedFriendDAO addedFriendDAO = new AddedFriendDAO(getApplicationContext());
-                        addedFriendDAO.getServerFriendList();
+                        AddedFriendService addedFriendService = new AddedFriendService(getApplicationContext());
+                        addedFriendService.getServerFriendList();
 
                         Log.e("TAG", "로그인 성공");
                         finish();

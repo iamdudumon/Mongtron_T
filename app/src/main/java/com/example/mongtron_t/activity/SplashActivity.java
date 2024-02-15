@@ -10,16 +10,14 @@ import com.bumptech.glide.Glide;
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.http.RetrofitClient;
 import com.example.mongtron_t.http.RetrofitRxClient;
-import com.example.mongtron_t.user.AddedFriendDAO;
-import com.example.mongtron_t.user.UserInfoDAO;
-import com.example.mongtron_t.user.UserPositionDAO;
-
-import java.security.NoSuchAlgorithmException;
+import com.example.mongtron_t.service.AddedFriendService;
+import com.example.mongtron_t.service.UserInfoService;
+import com.example.mongtron_t.service.UserPositionService;
 
 public class SplashActivity extends AppCompatActivity {
-    UserInfoDAO userInfoDAO;
-    UserPositionDAO userPositionDAO;
-    AddedFriendDAO addedFriendDAO;
+    UserInfoService userInfoService;
+    UserPositionService userPositionService;
+    AddedFriendService addedFriendService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +39,13 @@ public class SplashActivity extends AppCompatActivity {
         RetrofitClient.setRetrofit();                           //앱 실행시 초기 한번만 실행할 수 있도록...
         RetrofitRxClient.setRetrofit();
 
-        userInfoDAO = new UserInfoDAO(getApplicationContext());
-        userPositionDAO = new UserPositionDAO(getApplicationContext());
-        addedFriendDAO = new AddedFriendDAO(getApplicationContext());
+        userInfoService = new UserInfoService(getApplicationContext());
+        userPositionService = new UserPositionService(getApplicationContext());
+        addedFriendService = new AddedFriendService(getApplicationContext());
         //자동 로그인 시 저장할 메모리에 저장할 요소들...
-        userInfoDAO.autoLogin();
-        userPositionDAO.autoLogin();
-        addedFriendDAO.autoLogin();
+        userInfoService.autoLogin();
+        userPositionService.autoLogin();
+        addedFriendService.autoLogin();
 
         new Thread(() -> {
             //서버로부터 공개키를 수신
@@ -56,7 +54,7 @@ public class SplashActivity extends AppCompatActivity {
 //            publicKey = publicKey.replace("-----BEGIN PUBLIC KEY-----\n", "").replace("-----END PUBLIC KEY-----\n", "");
 //
 //            //수신받은 공개키를 내부 파일에 저장
-//            userInfoDAO.storePublicKey(publicKey);
+//            userInfoService.storePublicKey(publicKey);
 //
 //            //서버와 자동 로그인 통신
 //

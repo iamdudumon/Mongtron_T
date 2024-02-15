@@ -1,4 +1,4 @@
-package com.example.mongtron_t.user;
+package com.example.mongtron_t.service;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,12 +17,12 @@ import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.observers.DisposableSingleObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class UserPositionDAO {
+public class UserPositionService {
     private final Context context;
     SharedPreferences autologin;
     SharedPreferences.Editor autoLoginEditor;
 
-    public UserPositionDAO(Context context) {
+    public UserPositionService(Context context) {
         this.context = context;
         autologin = this.context.getSharedPreferences("autoLogin", Activity.MODE_PRIVATE);
         autoLoginEditor = autologin.edit();

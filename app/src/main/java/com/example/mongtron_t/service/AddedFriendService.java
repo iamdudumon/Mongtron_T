@@ -1,4 +1,4 @@
-package com.example.mongtron_t.user;
+package com.example.mongtron_t.service;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -23,12 +23,12 @@ import io.reactivex.rxjava3.observers.DisposableSingleObserver;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
-public class AddedFriendDAO extends SQLiteOpenHelper {
+public class AddedFriendService extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Mongtron_t.db";
     private static final String TABLE_NAME = "friend";
     private static final int DATABASE_VERSION = 1;
 
-    public AddedFriendDAO(@Nullable Context context) {
+    public AddedFriendService(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

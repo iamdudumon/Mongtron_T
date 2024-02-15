@@ -28,11 +28,11 @@ import com.example.mongtron_t.dialog.CustomAlterDialog;
 import com.example.mongtron_t.fragment.FuncBarFragment;
 import com.example.mongtron_t.http.RetrofitRxClient;
 import com.example.mongtron_t.model.OtherVO;
+import com.example.mongtron_t.service.AddedFriendService;
 import com.example.mongtron_t.tool.MarkerFunc;
-import com.example.mongtron_t.user.AddedFriendDAO;
 import com.example.mongtron_t.model.AddedFriendVO;
 import com.example.mongtron_t.model.UserInfoVO;
-import com.example.mongtron_t.user.UserPositionDAO;
+import com.example.mongtron_t.service.UserPositionService;
 
 import com.example.mongtron_t.model.UserPositionVO;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -57,7 +57,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         OnMapReadyCallback {
     public static GoogleMap mMap;                          //marker 와 타사용자를 한 곳에 묶기 위해 map 사용
     private MarkerFunc markerFunc;
-    private UserPositionDAO userPositionDAO;
+    private UserPositionService userPositionService;
 
     private FusedLocationProviderClient mFusedLocationProviderClient; // Deprecated 된 FusedLocationApi 를 대체
     private LocationRequest locationRequest;
@@ -97,7 +97,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         mapFragment.getMapAsync(this);
 
         markerFunc = new MarkerFunc();
-        userPositionDAO = new UserPositionDAO(getApplicationContext());
+        userPositionService = new UserPositionService(getApplicationContext());
         initButton();
     }
 
@@ -133,7 +133,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
             customAlterDialog.getBuilder().setPositiveButton("On", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {                                //dialog 창으로 바로 gps 상태를 변경
-                    userPositionDAO.toggleGpsState();
+                    userPositionService.toggleGpsState();
                 }
             });
 
@@ -153,14 +153,14 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
 
     @Override
     public void onInfoWindowClick(@NonNull Marker marker) {
-        AddedFriendDAO addedFriendDAO = new AddedFriendDAO(this);
+        AddedFriendService addedFriendService = new AddedFriendService(this);
         OtherVO user = MarkerFunc.currentMarkerMap.get(marker);
 
         AddedFriendVO friendVO = new AddedFriendVO(user.getId(), user.getNickName(), user.getSex(), true, user.getDistance());
-        if (addedFriendDAO.isAddedFriendVO(friendVO.getFriendId()))                          //db에 이미 존재하는 친구라면 클릭 이벤트 종료
+        if (addedFriendService.isAddedFriendVO(friendVO.getFriendId()))                          //db에 이미 존재하는 친구라면 클릭 이벤트 종료
             Toast.makeText(this, "이미 존재하는 친구", Toast.LENGTH_SHORT).show();
         else {
-            addedFriendDAO.insertAddedFriend(friendVO);     //DB에 저장
+            addedFriendService.insertAddedFriend(friendVO);     //DB에 저장
             AddedFriendVO.friendsList.add(friendVO);        //메모리 상에 저장
             Toast.makeText(this, marker.getTitle() + "을 친구등록 완료", Toast.LENGTH_SHORT).show();
         }
@@ -254,8 +254,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
                 markerFunc.markMeLocation(markerSnippet, currentPosition);
 
                 if (UserInfoVO.getInstance().getId() > 0 && UserPositionVO.getInstance().isGpsState()) {           //로그인 상태 + gps 표시여부가 on 이어야
-                    userPositionDAO.storeCurrentLocation(currentPosition);
-                    userPositionDAO.getNearbyOthersLocation(currentPosition, markerFunc);
+                    userPositionService.storeCurrentLocation(currentPosition);
+                    userPositionService.getNearbyOthersLocation(currentPosition, markerFunc);
                 }
             }
         }

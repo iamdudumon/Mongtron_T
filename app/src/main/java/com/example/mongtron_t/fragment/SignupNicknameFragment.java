@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.dialog.CustomProgressDialog;
 import com.example.mongtron_t.dialog.ReSignupDialog;
-import com.example.mongtron_t.user.UserInfoDAO;
+import com.example.mongtron_t.service.UserInfoService;
 import com.example.mongtron_t.model.UserInfoVO;
 
 import java.util.regex.Matcher;
@@ -30,12 +30,12 @@ public class SignupNicknameFragment extends Fragment {
     View view;
     CustomProgressDialog dialog;
 
-    UserInfoDAO userInfoDAO;
+    UserInfoService userInfoService;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        userInfoDAO = new UserInfoDAO(requireActivity());
+        userInfoService = new UserInfoService(requireActivity());
         dialog = new CustomProgressDialog(requireActivity());
 
         initButton();
@@ -63,7 +63,7 @@ public class SignupNicknameFragment extends Fragment {
                     dialog.showProgressDialog();
 
                     new Thread(() -> {
-                        boolean nicknameCheckResult = userInfoDAO.nicknameCheck(nickname);
+                        boolean nicknameCheckResult = userInfoService.nicknameCheck(nickname);
                         dialog.cancelProgressDialog();
                         if (!nicknameCheckResult) {                          //닉네임이 중복X
                             UserInfoVO.getInstance().setNickname(nickname);

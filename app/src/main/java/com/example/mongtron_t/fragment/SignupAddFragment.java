@@ -25,7 +25,7 @@ import com.example.mongtron_t.dialog.ReSignupDialog;
 import com.example.mongtron_t.dialog.SignupAddAgeDialog;
 import com.example.mongtron_t.dialog.SignupAddNationalityDialog;
 import com.example.mongtron_t.dialog.SignupAddSexDialog;
-import com.example.mongtron_t.user.UserInfoDAO;
+import com.example.mongtron_t.service.UserInfoService;
 import com.example.mongtron_t.model.UserInfoVO;
 
 
@@ -33,13 +33,13 @@ public class SignupAddFragment extends Fragment {
     View view;
     CustomProgressDialog dialog;
 
-    UserInfoDAO userInfoDAO;
+    UserInfoService userInfoService;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        userInfoDAO = new UserInfoDAO(getContext());
+        userInfoService = new UserInfoService(getContext());
         dialog = new CustomProgressDialog(getContext());
 
         initButton();
@@ -74,7 +74,7 @@ public class SignupAddFragment extends Fragment {
                     try {
                         Log.e("TAG", UserInfoVO.getInstance().getEmail() + ", " + UserInfoVO.getInstance().getPassword());
                         Log.e("TAG", UserInfoVO.getInstance().getNickname());
-                        boolean registerResult = userInfoDAO.register();
+                        boolean registerResult = userInfoService.register();
                         UserInfoVO.getInstance().initUser();
                         dialog.cancelProgressDialog();
 

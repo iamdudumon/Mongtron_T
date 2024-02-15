@@ -21,18 +21,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mongtron_t.R;
-import com.example.mongtron_t.user.AddedFriendDAO;
+import com.example.mongtron_t.service.AddedFriendService;
 import com.example.mongtron_t.model.AddedFriendVO;
-import com.example.mongtron_t.user.UserInfoDAO;
+import com.example.mongtron_t.service.UserInfoService;
 import com.example.mongtron_t.model.UserInfoVO;
-import com.example.mongtron_t.user.UserPositionDAO;
+import com.example.mongtron_t.service.UserPositionService;
 import com.example.mongtron_t.model.UserPositionVO;
 
 
 public class SettingActivity extends AppCompatActivity {
-    UserInfoDAO userInfoDAO;
-    UserPositionDAO userPositionDAO;
-    AddedFriendDAO addedFriendDAO;
+    UserInfoService userInfoService;
+    UserPositionService userPositionService;
+    AddedFriendService addedFriendService;
 
 
     @Override
@@ -40,9 +40,9 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
-        userInfoDAO = new UserInfoDAO(getApplicationContext());
-        userPositionDAO = new UserPositionDAO(getApplicationContext());
-        addedFriendDAO = new AddedFriendDAO(getApplicationContext());
+        userInfoService = new UserInfoService(getApplicationContext());
+        userPositionService = new UserPositionService(getApplicationContext());
+        addedFriendService = new AddedFriendService(getApplicationContext());
 
         initProfileGPSSwitch();
         initButton();
@@ -79,8 +79,8 @@ public class SettingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     finish();
 
-                    userInfoDAO.logout();                           //logout 메소드 호출
-                    addedFriendDAO.deleteAllAddedFriend();          //로그아웃과 동시에 친구 목록 db 에서 삭제
+                    userInfoService.logout();                           //logout 메소드 호출
+                    addedFriendService.deleteAllAddedFriend();          //로그아웃과 동시에 친구 목록 db 에서 삭제
                     if (AddedFriendVO.friendsList.size() > 0) AddedFriendVO.friendsList.clear();
                 }
             });
@@ -180,7 +180,7 @@ public class SettingActivity extends AppCompatActivity {
         gpsSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userPositionDAO.toggleGpsState();
+                userPositionService.toggleGpsState();
             }
         });
         gpsSwitch.setChecked(UserPositionVO.getInstance().isGpsState());

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.mongtron_t.R;
-import com.example.mongtron_t.user.UserPositionDAO;
+import com.example.mongtron_t.service.UserPositionService;
 import com.example.mongtron_t.model.UserPositionVO;
 
 
@@ -66,8 +66,8 @@ public class RadiusInfoDialog extends DialogFragment {
         radiusInfoSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserPositionDAO userPositionDAO = new UserPositionDAO(getActivity());
-                userPositionDAO.storeRadiusInfo(radiusInfoValue);
+                UserPositionService userPositionService = new UserPositionService(getActivity());
+                userPositionService.storeRadiusInfo(radiusInfoValue);
                 dismiss();
             }
         });
