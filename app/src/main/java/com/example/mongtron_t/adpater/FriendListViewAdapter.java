@@ -17,6 +17,7 @@ import java.util.List;
 
 public class FriendListViewAdapter extends BaseAdapter {
     List<AddedFriendVO> items;
+    AddedFriendService addedFriendService;
 
     public FriendListViewAdapter(){
         items = AddedFriendVO.friendsList;
@@ -41,7 +42,7 @@ public class FriendListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Context context = parent.getContext();
         AddedFriendVO addedFriendVO = (AddedFriendVO) this.getItem(position);
-        AddedFriendService addedFriendService = new AddedFriendService(context);
+        addedFriendService = new AddedFriendService(context);
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -67,8 +68,8 @@ public class FriendListViewAdapter extends BaseAdapter {
         }
 
         addedFriendImgView.setImageResource(marketImg);
-        addedFriendNickNameTextView.setText(addedFriendVO.getFriendNickName().toString());
-        addedFriendDistanceTextView.setText(addedFriendVO.getDistance() > 0 ? String.valueOf(Math.round(addedFriendVO.getDistance()*100)/100.0)  + " km" : "?? km");
+        addedFriendNickNameTextView.setText(addedFriendVO.getFriendNickName());
+        addedFriendDistanceTextView.setText(addedFriendVO.getDistance() > 0 ? Math.round(addedFriendVO.getDistance() * 100) / 100.0 + " km" : "?? km");
         addedFriendGpsStateTextView.setText("GPS: " + (addedFriendVO.isFriendGpsState() ? "ON" : "OFF"));
 
         addedFriendDeleteButton.setOnClickListener(new View.OnClickListener() {                     //리스트 뷰의 각 아이템의 버튼 클릭 시 친구 삭제

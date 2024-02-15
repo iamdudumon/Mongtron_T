@@ -12,14 +12,14 @@ import com.example.mongtron_t.adpater.FriendListViewAdapter;
 import com.example.mongtron_t.service.AddedFriendService;
 
 public class FriendListActivity extends AppCompatActivity {
-    AddedFriendService addedFriendService;
+//    AddedFriendService addedFriendService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
 
-        addedFriendService = new AddedFriendService(this);
+//        addedFriendService = new AddedFriendService(this);
 
         ListView addedFriendListView = findViewById(R.id.addedFriendListView);
         FriendListViewAdapter addedFriendVOArrayAdapter = new FriendListViewAdapter();
@@ -37,13 +37,13 @@ public class FriendListActivity extends AppCompatActivity {
             }
         });
         //친구 정보 업데이트 버튼튼
-       ImageButton friendUpdateButton = findViewById(R.id.friendUpdateButton);
-        friendUpdateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddedFriendService addedFriendService = new AddedFriendService(getApplicationContext());
-                addedFriendService.getServerFriendList();
-            }
-        });
+//       ImageButton friendUpdateButton = findViewById(R.id.friendUpdateButton);
+//        friendUpdateButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AddedFriendService addedFriendService = new AddedFriendService(getApplicationContext());
+//                addedFriendService.getServerFriendList();
+//            }
+//        });
     }
 }
