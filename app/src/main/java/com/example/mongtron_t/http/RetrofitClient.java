@@ -31,30 +31,30 @@ public class RetrofitClient {
         retrofitService = retrofit.create(RetrofitService.class);
     }
 
-    public String startGET() {
-        Call<String> call = retrofitService.doGETStart();
-        Response<String> response = null;
-        try {
-            response = call.execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert Objects.requireNonNull(response).body() != null;
-        return response.body();
-    }
+//    public String startGET() {
+//        Call<String> call = retrofitService.doGETStart();
+//        Response<String> response = null;
+//        try {
+//            response = call.execute();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        assert Objects.requireNonNull(response).body() != null;
+//        return response.body();
+//    }
 
-    public int registerPost() {
+    public boolean registerPost() {
         Call<Void> call = retrofitService.doPostRegister(UserInfo.getInstance().getEmail(), UserInfo.getInstance().getPassword()
                 , UserInfo.getInstance().getNickname(), UserInfo.getInstance().getAge(), UserInfo.getInstance().getSex(), UserInfo.getInstance().getNationality());
 
         Response<Void> response;            //retrofit 통신을 동기화 처리, execute() 메소드를 호출하고 결과값을 리턴받음
         try {
             response = call.execute();
-            return response.code();
+            return response.code() == 200;
         }catch (IOException e) {
             Log.e("TAG", "Disconnected With Server");
             e.printStackTrace();
-            return 500;
+            return false;
         }
     }
 
@@ -64,23 +64,13 @@ public class RetrofitClient {
         Response<LoginResponse> response;
         try {
             response = call.execute();
-            if (response.code() != 200 && response.code() != 401) {
-                throw new RuntimeException("Server Intentional Error");
-            }
-
             return response.body();
-        } catch (RuntimeException e) {
-            Log.e("TAG", "Server Intentional Error");
-            e.printStackTrace();
-            return null;
         }catch (IOException e) {
             Log.e("TAG", "Disconnected With Server");
             e.printStackTrace();
             return null;
         }
-
     }
-
 
 //    public void aesKeyCheckPost(String encryptedAESKeyToString, Pair<String, String> encryptedEmailPair) throws Exception {
 //        Log.e("TAG", "암호화된 이메일: " + encryptedEmailPair.first);
@@ -109,10 +99,6 @@ public class RetrofitClient {
                 Log.e("TAG", "code: " + response.code());
                 throw new RuntimeException("Server Intentional Error");
             }
-        } catch (RuntimeException e) {
-            Log.e("TAG", "Server Intentional Error");
-            e.printStackTrace();
-            return true;
         }catch (IOException e){
             Log.e("TAG", "Disconnected With Server");
             e.printStackTrace();

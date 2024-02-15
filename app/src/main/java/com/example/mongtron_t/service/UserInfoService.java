@@ -11,6 +11,7 @@ import com.example.mongtron_t.http.RetrofitClient;
 import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.model.UserPosition;
 import com.example.mongtron_t.response.LoginResponse;
+import com.example.mongtron_t.tool.ResultMsg;
 
 import java.util.Objects;
 
@@ -70,14 +71,14 @@ public class UserInfoService {                                  //사용자 정�
 //        return autologin.getString("publicKey", null);
 //    }
 
-    public boolean register() {
+    public ResultMsg register() {
         //회원가입 진행
         RetrofitClient retrofitClient = new RetrofitClient();
-        int registerResponse = retrofitClient.registerPost();    //code 200이면 정상적인 회원가입, 아닐 시 회원가입 실패
+        boolean registerResponse = retrofitClient.registerPost();    //code 200이면 정상적인 회원가입, 아닐 시 회원가입 실패
         boolean result;
         String toastMsg;
 
-        if (registerResponse == 200) {                                    //회원 가입의 결과에 따라 변수 값 할당
+        if (registerResponse) {                                    //회원 가입의 결과에 따라 변수 값 할당
             toastMsg = "Successfully registered as a " + UserInfo.getInstance().getNickname();
 //            UserInfo.getInstance().setId(registerResponse.getId());                                 //User 객체에 정상적인 id가 대입되면서 등록 사용자로 판단
             result = true;
@@ -86,17 +87,17 @@ public class UserInfoService {                                  //사용자 정�
             result = false;
         }
 
-        Handler handler = new Handler(Looper.getMainLooper());                  //쓰레드에서 토스트 메세지를 뛰우기 위해 handler 사용
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(context, toastMsg, Toast.LENGTH_SHORT).show();
-            }
-        }, 0);
-        return result;
+//        Handler handler = new Handler(Looper.getMainLooper());                  //쓰레드에서 토스트 메세지를 뛰우기 위해 handler 사용
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Toast.makeText(context, toastMsg, Toast.LENGTH_SHORT).show();
+//            }
+//        }, 0);
+        return new ResultMsg(result, toastMsg);
     }
 
-    public boolean login() {
+    public ResultMsg login() {
         RetrofitClient retrofitClient = new RetrofitClient();
         LoginResponse loginResponse = retrofitClient.loginPost();    //code 200이면 정상적인 로그인, 아닐 시 로그인 실패
         boolean result;
@@ -121,14 +122,7 @@ public class UserInfoService {                                  //사용자 정�
             }
         }
 
-        Handler handler = new Handler(Looper.getMainLooper());                  //쓰레드에서 토스트 메세지를 뛰우기 위해 handler 사용
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(context, toastMsg, Toast.LENGTH_SHORT).show();
-            }
-        }, 0);
-        return result;
+        return new ResultMsg(result, toastMsg);
     }
 
     public boolean emailCheck(String email){
@@ -152,9 +146,9 @@ public class UserInfoService {                                  //사용자 정�
         UserPosition.getInstance().initUserPosition();
 //        OthersResponse.getInstance().initListPosition();
 
-        //RSA 공개 키는 다시 저장
-        autoLoginEditor.putString("publicKey", publicKey);
-        autoLoginEditor.commit();
+//        //RSA 공개 키는 다시 저장
+//        autoLoginEditor.putString("publicKey", publicKey);
+//        autoLoginEditor.commit();
     }
 
 }

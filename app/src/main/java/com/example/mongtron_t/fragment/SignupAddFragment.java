@@ -27,6 +27,7 @@ import com.example.mongtron_t.dialog.SignupAddNationalityDialog;
 import com.example.mongtron_t.dialog.SignupAddSexDialog;
 import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.service.UserInfoService;
+import com.example.mongtron_t.tool.ResultMsg;
 
 
 public class SignupAddFragment extends Fragment {
@@ -74,16 +75,17 @@ public class SignupAddFragment extends Fragment {
                     try {
                         Log.e("TAG", UserInfo.getInstance().getEmail() + ", " + UserInfo.getInstance().getPassword());
                         Log.e("TAG", UserInfo.getInstance().getNickname());
-                        boolean registerResult = userInfoService.register();
+                        ResultMsg registerResult = userInfoService.register();
                         UserInfo.getInstance().initUser();
                         dialog.cancelProgressDialog();
 
                         Handler handler = new Handler(Looper.getMainLooper());                  //메인 스레드 이외에서 ui 변경시 핸들러 사용
                         handler.postDelayed(() -> {
                             requireActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);      //터치 방지 해제
+                            registerResult.showToastMsg(getContext());
                         }, 0);
 
-                        if (registerResult) {                              //회원가입 성공
+                        if (registerResult.isResult()) {                              //회원가입 성공
                             Log.e("TAG", "회원가입 성공");
                             FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                             SignupCompleteFragment fragment = new SignupCompleteFragment();

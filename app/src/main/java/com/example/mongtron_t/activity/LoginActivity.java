@@ -1,5 +1,7 @@
 package com.example.mongtron_t.activity;
 
+import static java.security.AccessController.getContext;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +10,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,6 +23,7 @@ import com.example.mongtron_t.dialog.CustomProgressDialog;
 import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.service.AddedFriendService;
 import com.example.mongtron_t.service.UserInfoService;
+import com.example.mongtron_t.tool.ResultMsg;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -110,11 +114,15 @@ public class LoginActivity extends AppCompatActivity {
 
             new Thread(() -> {          //네트워크 작업은 무조건 메인 thread 와 다른 thread 로 구동해야함
                 try {
-                    boolean loginResult;
-                    loginResult = userInfoService.login();
+                    ResultMsg loginResult = userInfoService.login();
                     dialog.cancelProgressDialog();
 
-                    if (loginResult) {                          //로그인 성공
+                    Handler handler = new Handler(Looper.getMainLooper());                  //메인 스레드 이외에서 ui 변경시 핸들러 사용
+                    handler.postDelayed(() -> {
+                        loginResult.showToastMsg(getApplicationContext());
+                    }, 0);
+
+                    if (loginResult.isResult()) {                          //로그인 성공
                         AddedFriendService addedFriendService = new AddedFriendService(getApplicationContext());
                         addedFriendService.getServerFriendList();
 
