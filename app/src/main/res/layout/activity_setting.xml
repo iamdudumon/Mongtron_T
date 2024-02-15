@@ -9,7 +9,6 @@
     android:orientation="vertical"
     android:weightSum="776">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -42,11 +41,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="200"
-            android:gravity="top"
+            android:gravity="start"
             android:lineSpacingExtra="2sp"
             android:text="@string/headline"
-            android:textAppearance="@style/headline"
-            android:translationY="-1.11sp" />
+            android:textAppearance="@style/headline" />
 
         <Space
             android:layout_width="0dp"
@@ -59,13 +57,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="34"
-            android:gravity="top"
+            android:gravity="center"
             android:lineSpacingExtra="1sp"
             android:text="@string/edit"
-            android:textAppearance="@style/edit"
-            android:translationY="-0.28sp" />
+            android:textAppearance="@style/edit" />
 
     </LinearLayout>
+
 
     <Space
         android:layout_width="match_parent"
@@ -111,27 +109,24 @@
         android:layout_marginEnd="35dp"
         android:layout_weight="64"
         android:background="@drawable/rounding_box"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
-
-
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/e_mail_setting"
-            android:textAlignment="center"
             android:textAppearance="@style/e_mail_setting" />
-
 
         <TextView
             android:id="@+id/settingEmailTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
             android:layout_weight="2"
-            android:layout_gravity="center"
-            android:textAlignment="center"
+            android:gravity="end"
             android:textAppearance="@style/your_email_" />
 
     </LinearLayout>
@@ -147,8 +142,8 @@
         android:layout_marginStart="35dp"
         android:layout_marginEnd="35dp"
         android:layout_weight="92"
-        android:gravity="center"
         android:background="@drawable/rounding_box"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
@@ -159,7 +154,7 @@
             android:text="@string/sex_label"
             android:textAlignment="center"
             android:textAppearance="@style/profile_sex"
-            app:drawableTopCompat = "@drawable/profile_male_img"/>
+            app:drawableTopCompat="@drawable/profile_male_img" />
 
         <TextView
             android:id="@+id/profileNationalityTextView"
@@ -169,7 +164,7 @@
             android:text="@string/nationality_label"
             android:textAlignment="center"
             android:textAppearance="@style/profile_sex"
-            app:drawableTopCompat = "@drawable/korea_img" />
+            app:drawableTopCompat="@drawable/korea_img" />
 
         <TextView
             android:id="@+id/profileAgeTextView"
@@ -197,16 +192,16 @@
         <TextView
             android:id="@+id/gps"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="1"
             android:text="@string/gps_setting"
             android:textAlignment="center"
             android:textAppearance="@style/gps_setting" />
 
         <View
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1" />
 
         <LinearLayout

@@ -35,14 +35,14 @@
 
         <TextView
             android:id="@+id/headline"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="top"
+            android:layout_weight="200"
+            android:gravity="start"
             android:lineSpacingExtra="2sp"
             android:text="@string/sign_up"
-            android:textAppearance="@style/headline"
-            android:translationY="-1.11sp" />
+            android:textAppearance="@style/headline" />
 
     </LinearLayout>
 
