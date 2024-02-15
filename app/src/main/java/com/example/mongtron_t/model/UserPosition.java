@@ -48,7 +48,7 @@ public class UserPosition {
         return radiusInfo;
     }
 
-    public void setGpsPosition(float latitude, float longitude) {
+    public void setGpsPosition(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
