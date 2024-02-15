@@ -28,13 +28,13 @@ import com.example.mongtron_t.dialog.CustomAlterDialog;
 import com.example.mongtron_t.fragment.FuncBarFragment;
 import com.example.mongtron_t.http.RetrofitRxClient;
 import com.example.mongtron_t.model.OtherVO;
+import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.service.AddedFriendService;
 import com.example.mongtron_t.tool.MarkerFunc;
 import com.example.mongtron_t.model.AddedFriendVO;
-import com.example.mongtron_t.model.UserInfoVO;
 import com.example.mongtron_t.service.UserPositionService;
 
-import com.example.mongtron_t.model.UserPositionVO;
+import com.example.mongtron_t.model.UserPosition;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -127,7 +127,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         startLocationUpdates();
 
         //+ gps off 상태면 메세지 뛰우기
-        if (!UserPositionVO.getInstance().isGpsState() && UserInfoVO.getInstance().getId() > 0) {          //gps 노출은 off 이고 로그인 상태일 때
+        if (!UserPosition.getInstance().isGpsState() && UserInfo.getInstance().getId() > 0) {          //gps 노출은 off 이고 로그인 상태일 때
             CustomAlterDialog customAlterDialog = new CustomAlterDialog("알림문",
                     "App 내 GPS 상태가 Off 입니다.\n서비스 이용을 위해서는 활성화가 필요합니다.", MapsActivity.this);
             customAlterDialog.getBuilder().setPositiveButton("On", new DialogInterface.OnClickListener() {
@@ -253,7 +253,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
                 markerFunc.removeMakerAll();
                 markerFunc.markMeLocation(markerSnippet, currentPosition);
 
-                if (UserInfoVO.getInstance().getId() > 0 && UserPositionVO.getInstance().isGpsState()) {           //로그인 상태 + gps 표시여부가 on 이어야
+                if (UserInfo.getInstance().getId() > 0 && UserPosition.getInstance().isGpsState()) {           //로그인 상태 + gps 표시여부가 on 이어야
                     userPositionService.storeCurrentLocation(currentPosition);
                     userPositionService.getNearbyOthersLocation(currentPosition, markerFunc);
                 }

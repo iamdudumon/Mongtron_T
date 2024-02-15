@@ -25,8 +25,8 @@ import com.example.mongtron_t.dialog.ReSignupDialog;
 import com.example.mongtron_t.dialog.SignupAddAgeDialog;
 import com.example.mongtron_t.dialog.SignupAddNationalityDialog;
 import com.example.mongtron_t.dialog.SignupAddSexDialog;
+import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.service.UserInfoService;
-import com.example.mongtron_t.model.UserInfoVO;
 
 
 public class SignupAddFragment extends Fragment {
@@ -62,20 +62,20 @@ public class SignupAddFragment extends Fragment {
         Button signupAddNextButton = view.findViewById(R.id.signupAddNextButton);
         //서버로 회원가입 요청버튼
         signupAddNextButton.setOnClickListener(v -> {
-            Log.e("TAG", UserInfoVO.getInstance().getEmail() + ", " + UserInfoVO.getInstance().getPassword());
-            if (UserInfoVO.getInstance().getSex() != '0'
-                    && !UserInfoVO.getInstance().getNationality().equals("null")
-                    && UserInfoVO.getInstance().getAge() >= 0) {
-                Log.e("TAG", UserInfoVO.getInstance().getEmail() + ", " + UserInfoVO.getInstance().getPassword());
+            Log.e("TAG", UserInfo.getInstance().getEmail() + ", " + UserInfo.getInstance().getPassword());
+            if (UserInfo.getInstance().getSex() != '0'
+                    && !UserInfo.getInstance().getNationality().equals("null")
+                    && UserInfo.getInstance().getAge() >= 0) {
+                Log.e("TAG", UserInfo.getInstance().getEmail() + ", " + UserInfo.getInstance().getPassword());
                 dialog.showProgressDialog();
                 requireActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                 new Thread(() -> {
                     try {
-                        Log.e("TAG", UserInfoVO.getInstance().getEmail() + ", " + UserInfoVO.getInstance().getPassword());
-                        Log.e("TAG", UserInfoVO.getInstance().getNickname());
+                        Log.e("TAG", UserInfo.getInstance().getEmail() + ", " + UserInfo.getInstance().getPassword());
+                        Log.e("TAG", UserInfo.getInstance().getNickname());
                         boolean registerResult = userInfoService.register();
-                        UserInfoVO.getInstance().initUser();
+                        UserInfo.getInstance().initUser();
                         dialog.cancelProgressDialog();
 
                         Handler handler = new Handler(Looper.getMainLooper());                  //메인 스레드 이외에서 ui 변경시 핸들러 사용

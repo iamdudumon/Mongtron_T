@@ -8,10 +8,9 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import com.example.mongtron_t.http.RetrofitClient;
-import com.example.mongtron_t.model.UserInfoVO;
-import com.example.mongtron_t.model.UserPositionVO;
+import com.example.mongtron_t.model.UserInfo;
+import com.example.mongtron_t.model.UserPosition;
 import com.example.mongtron_t.response.LoginResponse;
-import com.example.mongtron_t.response.OthersResponse;
 
 import java.util.Objects;
 
@@ -28,15 +27,15 @@ public class UserInfoService {                                  //사용자 정�
 
     private void storeLoginInfo() {
         //자동 로그인을 위한 SharedPreferences Class 에 user 정보 저장
-        autoLoginEditor.putInt("id", UserInfoVO.getInstance().getId());
-        //autoLoginEditor.putString("name", UserInfoVO.getInstance().getName());
-        autoLoginEditor.putString("nickName", UserInfoVO.getInstance().getNickname());
-        autoLoginEditor.putString("email", UserInfoVO.getInstance().getEmail());
-        autoLoginEditor.putString("password", UserInfoVO.getInstance().getPassword());
-        autoLoginEditor.putInt("age", UserInfoVO.getInstance().getAge());
-        autoLoginEditor.putString("sex", String.valueOf(UserInfoVO.getInstance().getSex()));
-        autoLoginEditor.putString("nationality", UserInfoVO.getInstance().getNationality());
-        autoLoginEditor.putString("embassyNum", UserInfoVO.getInstance().getEmbassyNum());
+        autoLoginEditor.putInt("id", UserInfo.getInstance().getId());
+        //autoLoginEditor.putString("name", UserInfo.getInstance().getName());
+        autoLoginEditor.putString("nickName", UserInfo.getInstance().getNickname());
+        autoLoginEditor.putString("email", UserInfo.getInstance().getEmail());
+        autoLoginEditor.putString("password", UserInfo.getInstance().getPassword());
+        autoLoginEditor.putInt("age", UserInfo.getInstance().getAge());
+        autoLoginEditor.putString("sex", String.valueOf(UserInfo.getInstance().getSex()));
+        autoLoginEditor.putString("nationality", UserInfo.getInstance().getNationality());
+        autoLoginEditor.putString("embassyNum", UserInfo.getInstance().getEmbassyNum());
         autoLoginEditor.commit();
     }
 
@@ -55,10 +54,10 @@ public class UserInfoService {                                  //사용자 정�
             String nationality = autologin.getString("nationality", null);
             String embassyNum = autologin.getString("embassyNum", null);
 
-            UserInfoVO.getInstance().setUser(email, password, nickName, age, sex, nationality, embassyNum);
-            UserInfoVO.getInstance().setId(id);
+            UserInfo.getInstance().setUser(email, password, nickName, age, sex, nationality, embassyNum);
+            UserInfo.getInstance().setId(id);
         } else
-            UserInfoVO.getInstance().initUser();
+            UserInfo.getInstance().initUser();
     }
 
     //공개키를 저장하고 불러오는 메소드
@@ -79,8 +78,8 @@ public class UserInfoService {                                  //사용자 정�
         String toastMsg;
 
         if (registerResponse == 200) {                                    //회원 가입의 결과에 따라 변수 값 할당
-            toastMsg = "Successfully registered as a " + UserInfoVO.getInstance().getNickname();
-//            UserInfoVO.getInstance().setId(registerResponse.getId());                                 //User 객체에 정상적인 id가 대입되면서 등록 사용자로 판단
+            toastMsg = "Successfully registered as a " + UserInfo.getInstance().getNickname();
+//            UserInfo.getInstance().setId(registerResponse.getId());                                 //User 객체에 정상적인 id가 대입되면서 등록 사용자로 판단
             result = true;
         } else {
             toastMsg = "Server Intentional Error";
@@ -110,9 +109,9 @@ public class UserInfoService {                                  //사용자 정�
         else {
             if (loginResponse.getId() != -1) {                                    //회원 가입의 결과에 따라 변수 값 할당
                 toastMsg = "Successfully logged in as a " + loginResponse.getNickName();
-                UserInfoVO.getInstance().setUser(loginResponse.getEmail(), UserInfoVO.getInstance().getPassword(), //서버로 받아온 유저 정보를 userVO 객체에 할당
+                UserInfo.getInstance().setUser(loginResponse.getEmail(), UserInfo.getInstance().getPassword(), //서버로 받아온 유저 정보를 userVO 객체에 할당
                         loginResponse.getNickName(), loginResponse.getAge(), Objects.equals(loginResponse.getSex(), "male") ? '1' : '2', loginResponse.getNationality(), loginResponse.getEmbassyNum());
-                UserInfoVO.getInstance().setId(loginResponse.getId());
+                UserInfo.getInstance().setId(loginResponse.getId());
                 result = true;
 
                 storeLoginInfo();
@@ -149,9 +148,9 @@ public class UserInfoService {                                  //사용자 정�
         autoLoginEditor.clear();
         autoLoginEditor.commit();
         //기존의 정보 모두 clear
-        UserInfoVO.getInstance().initUser();
-        UserPositionVO.getInstance().initUserPosition();
-        OthersResponse.getInstance().initListPosition();
+        UserInfo.getInstance().initUser();
+        UserPosition.getInstance().initUserPosition();
+//        OthersResponse.getInstance().initListPosition();
 
         //RSA 공개 키는 다시 저장
         autoLoginEditor.putString("publicKey", publicKey);

@@ -18,8 +18,8 @@ import com.example.mongtron_t.R;
 import com.example.mongtron_t.activity.MapsActivity;
 import com.example.mongtron_t.dialog.CustomAlterDialog;
 import com.example.mongtron_t.dialog.RadiusInfoDialog;
-import com.example.mongtron_t.model.UserInfoVO;
-import com.example.mongtron_t.model.UserPositionVO;
+import com.example.mongtron_t.model.UserInfo;
+import com.example.mongtron_t.model.UserPosition;
 import com.google.android.gms.maps.GoogleMap;
 
 public class FuncBarFragment extends Fragment {
@@ -75,7 +75,7 @@ public class FuncBarFragment extends Fragment {
         radiusInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!UserPositionVO.getInstance().isGpsState() || UserInfoVO.getInstance().getId() < 0){                  //로그아웃 상태이거나 gps가 off이면 반경정보 설정 못 하도록
+                if(!UserPosition.getInstance().isGpsState() || UserInfo.getInstance().getId() < 0){                  //로그아웃 상태이거나 gps가 off이면 반경정보 설정 못 하도록
                     CustomAlterDialog customAlterDialog = new CustomAlterDialog("알림문",
                             "App 내 GPS 상태가 Off 입니다.\n서비스 이용을 위해서는 활성화가 필요합니다.", getActivity());
                     customAlterDialog.showDialLog();

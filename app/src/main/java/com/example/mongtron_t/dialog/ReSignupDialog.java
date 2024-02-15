@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mongtron_t.R;
-import com.example.mongtron_t.model.UserInfoVO;
+import com.example.mongtron_t.model.UserInfo;
 
 public class ReSignupDialog extends DialogFragment {
     View view;
@@ -49,7 +49,7 @@ public class ReSignupDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 requireActivity().finish();
-                UserInfoVO.getInstance().initUser();
+                UserInfo.getInstance().initUser();
                 dismiss();
             }
         });

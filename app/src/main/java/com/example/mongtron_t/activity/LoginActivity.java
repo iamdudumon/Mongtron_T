@@ -17,9 +17,9 @@ import android.widget.Toast;
 
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.dialog.CustomProgressDialog;
+import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.service.AddedFriendService;
 import com.example.mongtron_t.service.UserInfoService;
-import com.example.mongtron_t.model.UserInfoVO;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -104,8 +104,8 @@ public class LoginActivity extends AppCompatActivity {
         loginContinueButton.setOnClickListener(v -> {
             dialog.showProgressDialog();
             String[] emailPassword = readEmailPassword();
-            UserInfoVO.getInstance().setEmail(emailPassword[0]);
-            UserInfoVO.getInstance().setPassword(emailPassword[1]);
+            UserInfo.getInstance().setEmail(emailPassword[0]);
+            UserInfo.getInstance().setPassword(emailPassword[1]);
             userInfoService = new UserInfoService(getApplicationContext());
 
             new Thread(() -> {          //네트워크 작업은 무조건 메인 thread 와 다른 thread 로 구동해야함

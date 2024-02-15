@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.example.mongtron_t.http.RetrofitClient;
 import com.example.mongtron_t.http.RetrofitRxClient;
-import com.example.mongtron_t.model.UserPositionVO;
+import com.example.mongtron_t.model.UserPosition;
 import com.example.mongtron_t.response.OthersResponse;
 import com.example.mongtron_t.tool.MarkerFunc;
 import com.google.android.gms.maps.model.LatLng;
@@ -35,28 +35,28 @@ public class UserPositionService {
             boolean gpsState = autologin.getBoolean("gpsState", false);
             int radiusInfo = autologin.getInt("radiusInfo", 5);                           //기본 값 5km
 
-            if (gpsState != UserPositionVO.getInstance().isGpsState())
-                UserPositionVO.getInstance().setGpsState();
-            UserPositionVO.getInstance().setRadiusInfo(radiusInfo);
+            if (gpsState != UserPosition.getInstance().isGpsState())
+                UserPosition.getInstance().setGpsState();
+            UserPosition.getInstance().setRadiusInfo(radiusInfo);
         }
     }
 
     public void toggleGpsState(){
-        UserPositionVO.getInstance().setGpsState();                                             //gps 상태를 반대로 toggle
-        autoLoginEditor.putBoolean("gpsState", UserPositionVO.getInstance().isGpsState());
+        UserPosition.getInstance().setGpsState();                                             //gps 상태를 반대로 toggle
+        autoLoginEditor.putBoolean("gpsState", UserPosition.getInstance().isGpsState());
         autoLoginEditor.commit();
 
         RetrofitClient.stateUpdatePatch();
     }
 
     public void storeRadiusInfo(int radiusInfo){
-        UserPositionVO.getInstance().setRadiusInfo(radiusInfo);
+        UserPosition.getInstance().setRadiusInfo(radiusInfo);
         autoLoginEditor.putInt("radiusInfo", radiusInfo);
         autoLoginEditor.commit();
     }
 
     public void getNearbyOthersLocation(LatLng currentPosition, MarkerFunc markerFunc){
-        UserPositionVO.getInstance().setGpsPosition((float) currentPosition.latitude, (float) currentPosition.longitude);
+        UserPosition.getInstance().setGpsPosition((float) currentPosition.latitude, (float) currentPosition.longitude);
 
         RetrofitRxClient.disposable.add(RetrofitRxClient.nearbyOthersGet()
                 .subscribeOn(Schedulers.newThread())
@@ -91,7 +91,7 @@ public class UserPositionService {
     }
 
     public void storeCurrentLocation(LatLng currentPosition) {
-        UserPositionVO.getInstance().setGpsPosition((float) currentPosition.latitude, (float) currentPosition.longitude);
+        UserPosition.getInstance().setGpsPosition((float) currentPosition.latitude, (float) currentPosition.longitude);
         RetrofitClient.coordinateUpdatePatch();
     }
 }

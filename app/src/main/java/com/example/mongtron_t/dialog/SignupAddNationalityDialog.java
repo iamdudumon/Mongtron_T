@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.adpater.NationalityListViewAdapter;
-import com.example.mongtron_t.model.UserInfoVO;
+import com.example.mongtron_t.model.UserInfo;
 
 
 public class SignupAddNationalityDialog extends DialogFragment {
@@ -108,7 +108,7 @@ public class SignupAddNationalityDialog extends DialogFragment {
                 ImageView nationalityImg = addView.findViewById(R.id.nationalityImg);
                 nationalityImg.setImageDrawable(resizedDrawable);
 
-                UserInfoVO.getInstance().setNationality(nationality);
+                UserInfo.getInstance().setNationality(nationality);
                 dismiss();
             }
         });

@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.dialog.CustomAlterDialog;
-import com.example.mongtron_t.model.UserInfoVO;
+import com.example.mongtron_t.model.UserInfo;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //로그인 상태면 프로필 화면 전환 아닐 시 로그인 화면으로 전환
-                Intent intent = UserInfoVO.getInstance().getId() > 0 ? new Intent((getApplicationContext()), SettingActivity.class) : new Intent((getApplicationContext()), LoginActivity.class);
+                Intent intent = UserInfo.getInstance().getId() > 0 ? new Intent((getApplicationContext()), SettingActivity.class) : new Intent((getApplicationContext()), LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -134,9 +134,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //로그인 상태에서만 sos call 기능 가능
-                if (UserInfoVO.getInstance().getId() > 0) {
+                if (UserInfo.getInstance().getId() > 0) {
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
-                    callIntent.setData(Uri.parse("tel:" + UserInfoVO.getInstance().getEmbassyNum().replace("-", "")));
+                    callIntent.setData(Uri.parse("tel:" + UserInfo.getInstance().getEmbassyNum().replace("-", "")));
                     try {
                         startActivity(callIntent);
 

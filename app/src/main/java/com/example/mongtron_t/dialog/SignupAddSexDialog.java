@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 
 import com.example.mongtron_t.R;
-import com.example.mongtron_t.model.UserInfoVO;
+import com.example.mongtron_t.model.UserInfo;
 
 public class SignupAddSexDialog extends DialogFragment {
     View view;
@@ -59,7 +59,7 @@ public class SignupAddSexDialog extends DialogFragment {
                 sexFragmentButton.setText(sex);
                 sexFragmentButton.setTextColor(getResources().getColor(R.color.black));
 
-                UserInfoVO.getInstance().setSex(readDialogSexValue());
+                UserInfo.getInstance().setSex(readDialogSexValue());
                 dismiss();
             }
         });

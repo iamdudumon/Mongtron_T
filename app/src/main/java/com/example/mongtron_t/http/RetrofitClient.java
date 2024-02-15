@@ -4,9 +4,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.response.LoginResponse;
-import com.example.mongtron_t.model.UserInfoVO;
-import com.example.mongtron_t.model.UserPositionVO;
+import com.example.mongtron_t.model.UserPosition;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -44,8 +44,8 @@ public class RetrofitClient {
     }
 
     public int registerPost() {
-        Call<Void> call = retrofitService.doPostRegister(UserInfoVO.getInstance().getEmail(), UserInfoVO.getInstance().getPassword()
-                , UserInfoVO.getInstance().getNickname(), UserInfoVO.getInstance().getAge(), UserInfoVO.getInstance().getSex(), UserInfoVO.getInstance().getNationality());
+        Call<Void> call = retrofitService.doPostRegister(UserInfo.getInstance().getEmail(), UserInfo.getInstance().getPassword()
+                , UserInfo.getInstance().getNickname(), UserInfo.getInstance().getAge(), UserInfo.getInstance().getSex(), UserInfo.getInstance().getNationality());
 
         Response<Void> response;            //retrofit 통신을 동기화 처리, execute() 메소드를 호출하고 결과값을 리턴받음
         try {
@@ -59,7 +59,7 @@ public class RetrofitClient {
     }
 
     public LoginResponse loginPost() {
-        Call<LoginResponse> call = retrofitService.doPostLogin(UserInfoVO.getInstance().getEmail(), UserInfoVO.getInstance().getPassword());
+        Call<LoginResponse> call = retrofitService.doPostLogin(UserInfo.getInstance().getEmail(), UserInfo.getInstance().getPassword());
 
         Response<LoginResponse> response;
         try {
@@ -148,8 +148,8 @@ public class RetrofitClient {
     }
 
     static public void coordinateUpdatePatch(){
-        Call<Void> call = retrofitService.doPatchCoordinateUpdate(UserInfoVO.getInstance().getId(),
-                UserPositionVO.getInstance().getLatitude(), UserPositionVO.getInstance().getLongitude(), UserPositionVO.getInstance().getRadiusInfo());
+        Call<Void> call = retrofitService.doPatchCoordinateUpdate(UserInfo.getInstance().getId(),
+                UserPosition.getInstance().getLatitude(), UserPosition.getInstance().getLongitude(), UserPosition.getInstance().getRadiusInfo());
 
         call.enqueue(new Callback<Void>() {
             @Override
@@ -163,7 +163,7 @@ public class RetrofitClient {
         });
     }
     static public void stateUpdatePatch() {
-        Call<Integer> call = retrofitService.doPatchStateUpdate(UserInfoVO.getInstance().getId(), UserPositionVO.getInstance().isGpsState());
+        Call<Integer> call = retrofitService.doPatchStateUpdate(UserInfo.getInstance().getId(), UserPosition.getInstance().isGpsState());
 
         call.enqueue(new Callback<Integer>() {
             @Override
@@ -182,7 +182,7 @@ public class RetrofitClient {
     }
 
     public void friendAddPost(int friendId) {
-        Call<Void> call = retrofitService.doPostFriendAdd(UserInfoVO.getInstance().getId(), friendId);
+        Call<Void> call = retrofitService.doPostFriendAdd(UserInfo.getInstance().getId(), friendId);
 
         call.enqueue(new Callback<Void>() {
             @Override
@@ -201,7 +201,7 @@ public class RetrofitClient {
     }
 
     public void friendRemoveDelete(int friendId) {
-        Call<Void> call = retrofitService.doDeleteFriendRemove(UserInfoVO.getInstance().getId(), friendId);
+        Call<Void> call = retrofitService.doDeleteFriendRemove(UserInfo.getInstance().getId(), friendId);
 
         call.enqueue(new Callback<Void>() {
             @Override

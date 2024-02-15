@@ -19,8 +19,8 @@ import android.widget.Toast;
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.dialog.CustomProgressDialog;
 import com.example.mongtron_t.dialog.ReSignupDialog;
+import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.service.UserInfoService;
-import com.example.mongtron_t.model.UserInfoVO;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -66,7 +66,7 @@ public class SignupNicknameFragment extends Fragment {
                         boolean nicknameCheckResult = userInfoService.nicknameCheck(nickname);
                         dialog.cancelProgressDialog();
                         if (!nicknameCheckResult) {                          //닉네임이 중복X
-                            UserInfoVO.getInstance().setNickname(nickname);
+                            UserInfo.getInstance().setNickname(nickname);
 
                             FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                             SignupAddFragment signupAddFragment = new SignupAddFragment();

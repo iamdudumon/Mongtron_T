@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.service.UserPositionService;
-import com.example.mongtron_t.model.UserPositionVO;
+import com.example.mongtron_t.model.UserPosition;
 
 
 public class RadiusInfoDialog extends DialogFragment {
@@ -39,7 +39,7 @@ public class RadiusInfoDialog extends DialogFragment {
     }
 
     private void initView(){
-        radiusInfoValue = UserPositionVO.getInstance().getRadiusInfo();
+        radiusInfoValue = UserPosition.getInstance().getRadiusInfo();
         radiusInfoTextView = view.findViewById(R.id.radiusInfoTextView);
         radiusInfoTextView.setText(String.valueOf(radiusInfoValue));
 

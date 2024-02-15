@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.mongtron_t.R;
 import com.example.mongtron_t.dialog.ReSignupDialog;
-import com.example.mongtron_t.model.UserInfoVO;
+import com.example.mongtron_t.model.UserInfo;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,7 +53,7 @@ public class SignupPasswordFragment extends Fragment {
                 String[] password = readPassword();
                 if (isValidPassword(password[0])) {
                     if (password[0].equals(password[1])) {
-                        UserInfoVO.getInstance().setPassword(password[0]);
+                        UserInfo.getInstance().setPassword(password[0]);
                         //두 패스워드가 같다면 프래그먼트 이동
                         FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                         SignupNicknameFragment signupNicknameFragment = new SignupNicknameFragment();

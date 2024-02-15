@@ -1,7 +1,7 @@
 package com.example.mongtron_t.model;
 
 //VO class, 회원가입시 전송하고 자동 로그인을 위해 저장되는 data
-public class UserInfoVO {
+public class UserInfo {
     private int id;         //서버에서 보내주는 고유한 id
     private String email;
     private String password;
@@ -11,15 +11,15 @@ public class UserInfoVO {
     private String nationality;
     private String embassyNum;
 
-    private static UserInfoVO instance;
-    public static synchronized UserInfoVO getInstance(){        //싱클톤 패턴을 이용해 전역변수화
+    private static UserInfo instance;
+    public static synchronized UserInfo getInstance(){        //싱클톤 패턴을 이용해 전역변수화
         if(null == instance){
-            instance = new UserInfoVO();
+            instance = new UserInfo();
         }
         return instance;
     }
 
-    public UserInfoVO(){                                        //미가입 사용자를 구분하기 위한 id
+    public UserInfo(){                                        //미가입 사용자를 구분하기 위한 id
         this.id = -1;
     }
 

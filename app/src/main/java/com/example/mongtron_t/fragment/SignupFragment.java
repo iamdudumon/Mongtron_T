@@ -16,7 +16,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.mongtron_t.R;
-import com.example.mongtron_t.model.UserInfoVO;
+import com.example.mongtron_t.model.UserInfo;
 
 
 
@@ -46,7 +46,7 @@ public class SignupFragment extends Fragment {
 //    @Override
 //    public void onBackPressed() {
 //        super.onBackPressed();
-//        UserInfoVO.getInstance().initUser();
+//        UserInfo.getInstance().initUser();
 //    }
 
     private void initButton(){
@@ -57,7 +57,7 @@ public class SignupFragment extends Fragment {
                 FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                 SignupPasswordFragment signupPasswordFragment = new SignupPasswordFragment();
 
-                UserInfoVO.getInstance().setEmail(email);
+                UserInfo.getInstance().setEmail(email);
 
                 transaction.add(R.id.signupPasswordFragment, signupPasswordFragment);                         //패스워트 프래그먼트로 전환
                 transaction.commit();

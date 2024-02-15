@@ -1,9 +1,9 @@
 package com.example.mongtron_t.http;
 
+import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.response.AddedFriendResponse;
 import com.example.mongtron_t.response.OthersResponse;
-import com.example.mongtron_t.model.UserInfoVO;
-import com.example.mongtron_t.model.UserPositionVO;
+import com.example.mongtron_t.model.UserPosition;
 
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -27,11 +27,11 @@ public class RetrofitRxClient {
     }
 
     public Single<AddedFriendResponse> friendListGet(){
-        return retrofitService.doGetFriendList(UserInfoVO.getInstance().getId(), UserPositionVO.getInstance().getLatitude(), UserPositionVO.getInstance().getLongitude());
+        return retrofitService.doGetFriendList(UserInfo.getInstance().getId(), UserPosition.getInstance().getLatitude(), UserPosition.getInstance().getLongitude());
     }
 
     static public Single<OthersResponse> nearbyOthersGet(){
-        return retrofitService.doGetNearbyOthers(UserInfoVO.getInstance().getId(),
-                UserPositionVO.getInstance().getLatitude(), UserPositionVO.getInstance().getLongitude(), UserPositionVO.getInstance().getRadiusInfo());
+        return retrofitService.doGetNearbyOthers(UserInfo.getInstance().getId(),
+                UserPosition.getInstance().getLatitude(), UserPosition.getInstance().getLongitude(), UserPosition.getInstance().getRadiusInfo());
     }
 }

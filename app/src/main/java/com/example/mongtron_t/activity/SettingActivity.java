@@ -21,12 +21,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mongtron_t.R;
+import com.example.mongtron_t.model.UserInfo;
 import com.example.mongtron_t.service.AddedFriendService;
 import com.example.mongtron_t.model.AddedFriendVO;
 import com.example.mongtron_t.service.UserInfoService;
-import com.example.mongtron_t.model.UserInfoVO;
 import com.example.mongtron_t.service.UserPositionService;
-import com.example.mongtron_t.model.UserPositionVO;
+import com.example.mongtron_t.model.UserPosition;
 
 
 public class SettingActivity extends AppCompatActivity {
@@ -52,7 +52,7 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        if(UserInfoVO.getInstance().getId() > 0 )initProfileImg();
+        if(UserInfo.getInstance().getId() > 0 )initProfileImg();
     }
 
     private void initButton() {
@@ -66,12 +66,12 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void initProfileText() {                                                                                     //자동 로그인 정보가 있으면 사용자의 프로필 정보를 표시
-        if (UserInfoVO.getInstance().getId() > 0) {
+        if (UserInfo.getInstance().getId() > 0) {
             TextView settingNicknameTextView = findViewById(R.id.settingNicknameTextView);
             TextView settingEmailTextView = findViewById(R.id.settingEmailTextView);
 
-            settingNicknameTextView.setText(UserInfoVO.getInstance().getNickname());
-            settingEmailTextView.setText(UserInfoVO.getInstance().getEmail());
+            settingNicknameTextView.setText(UserInfo.getInstance().getNickname());
+            settingEmailTextView.setText(UserInfo.getInstance().getEmail());
 
             Button logoutButton = findViewById(R.id.logoutButton);                                                                //로그아웃 버튼으로 변환
             logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +100,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
         //Age 항목 각 텍스트 크기와 속성을 달리 함
-        String userAge = String.valueOf(UserInfoVO.getInstance().getAge());
+        String userAge = String.valueOf(UserInfo.getInstance().getAge());
         String ageLabel = userAge + "\nAge";
 
         SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(ageLabel);
@@ -121,7 +121,7 @@ public class SettingActivity extends AppCompatActivity {
         int nationalityWidth = topDrawable.getIntrinsicWidth();
 
         Drawable newDrawable = null;
-        switch (UserInfoVO.getInstance().getNationality()) {
+        switch (UserInfo.getInstance().getNationality()) {
             case "USA":
                 newDrawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.usa_img);
                 break;
@@ -152,7 +152,7 @@ public class SettingActivity extends AppCompatActivity {
 
         //성별에 따른 이미지 변경
         topDrawable = profileSexTextView.getCompoundDrawables()[1];
-        switch (UserInfoVO.getInstance().getSex()) {
+        switch (UserInfo.getInstance().getSex()) {
             case '1':
                 newDrawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_male_img);
                 break;
@@ -183,6 +183,6 @@ public class SettingActivity extends AppCompatActivity {
                 userPositionService.toggleGpsState();
             }
         });
-        gpsSwitch.setChecked(UserPositionVO.getInstance().isGpsState());
+        gpsSwitch.setChecked(UserPosition.getInstance().isGpsState());
     }
 }
